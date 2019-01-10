@@ -24,6 +24,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<Movie> allMovies() {
+        //TODO needs pagination
         return movieRepository.findAll();
     }
 }

@@ -23,40 +23,40 @@ import java.util.List;
 @SpringBootApplication
 @EnableDiscoveryClient
 public class RentClientApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(RentClientApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(RentClientApplication.class, args);
+    }
 }
 
 @RestController
 @RequestMapping("/movies")
 class RentsApiGateway {
 
-	@Autowired
-	private RestTemplate restTemplate;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/all")
-	public ResponseEntity movieNames() {
-		ParameterizedTypeReference<List<String>> ptr = new ParameterizedTypeReference<List<String>>() {};
+    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    public ResponseEntity movieNames() {
 
-		ResponseEntity<List<String>> rsp = restTemplate.exchange("http://rent-service/allMovies",
-				HttpMethod.GET,null, ptr);
 
-		return rsp;
-	}
+        ParameterizedTypeReference<List<String>> ptr = new ParameterizedTypeReference<List<String>>() {};
 
-	class MovieName {
-		private String name;
+        ResponseEntity<List<String>> rsp = restTemplate.exchange("http://rent-service/allMovies",
+                HttpMethod.GET, null, ptr);
 
-		public String getName() {
-			return name;
-		}
+        return rsp;
+    }
 
-		public void setName(String name) {
-			this.name = name;
-		}
-	}
+    class MovieName {
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 
 }
