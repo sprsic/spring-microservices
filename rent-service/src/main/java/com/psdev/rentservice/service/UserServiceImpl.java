@@ -1,6 +1,6 @@
 package com.psdev.rentservice.service;
 
-import com.psdev.rentservice.model.User;
+import com.psdev.rentservice.entity.User;
 import com.psdev.rentservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

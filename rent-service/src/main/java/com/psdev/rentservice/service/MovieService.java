@@ -1,12 +1,13 @@
 package com.psdev.rentservice.service;
 
-import com.psdev.rentservice.model.Movie;
+import com.psdev.rentservice.entity.Movie;
+import com.psdev.rentservice.entity.model.MovieModel;
 
 import java.util.List;
 
 public interface MovieService {
 
-    void saveMovie(Movie movie);
+    void saveMovie(MovieModel movie);
 
     /**
      * Returns a movie details for a given movie name

@@ -1,6 +1,6 @@
 package com.psdev.rentservice.repository;
 
-import com.psdev.rentservice.model.Movie;
+import com.psdev.rentservice.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

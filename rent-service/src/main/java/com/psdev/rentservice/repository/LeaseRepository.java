@@ -1,10 +1,9 @@
 package com.psdev.rentservice.repository;
 
-import com.psdev.rentservice.model.Lease;
+import com.psdev.rentservice.entity.Lease;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface LeaseRepository extends JpaRepository<Lease, Long> {

@@ -1,9 +1,12 @@
 package com.psdev.rentservice.service;
 
+import com.psdev.rentservice.entity.model.MovieModel;
 import com.psdev.rentservice.repository.MovieRepository;
-import com.psdev.rentservice.model.Movie;
+import com.psdev.rentservice.entity.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,8 +16,12 @@ public class MovieServiceImpl implements MovieService {
     private MovieRepository movieRepository;
 
     @Override
-    public void saveMovie(Movie movie) {
-        movieRepository.save(movie);
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void saveMovie(MovieModel movie) {
+        Movie m = new Movie();
+        m.setName(movie.getName());
+        m.setRank(movie.getRank());
+        movieRepository.save(m);
     }
 
     @Override

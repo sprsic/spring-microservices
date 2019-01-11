@@ -1,6 +1,6 @@
 package com.psdev.rentservice.service;
 
-import com.psdev.rentservice.model.Lease;
+import com.psdev.rentservice.entity.Lease;
 
 import java.util.List;
 

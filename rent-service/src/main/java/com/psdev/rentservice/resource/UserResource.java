@@ -1,6 +1,6 @@
 package com.psdev.rentservice.resource;
 
-import com.psdev.rentservice.model.User;
+import com.psdev.rentservice.entity.User;
 import com.psdev.rentservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
 package com.psdev.rentservice.service;
 
-import com.psdev.rentservice.model.User;
+import com.psdev.rentservice.entity.User;
 
 import java.util.List;
 
