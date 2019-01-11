@@ -13,7 +13,7 @@ import java.util.List;
 public class LeaseResource {
     @Autowired
     private LeaseService leaseService;
-    @RequestMapping("lease/findByUser")
+    @RequestMapping("lease/byUserName")
     public List<Lease> findByUser(@Param("userName") String userName) {
         return leaseService.findAllLeasesForUser(userName);
     }

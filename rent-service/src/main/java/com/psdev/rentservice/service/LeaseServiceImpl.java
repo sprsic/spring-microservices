@@ -12,6 +12,7 @@ public class LeaseServiceImpl implements LeaseService {
 
     @Autowired
     private LeaseRepository leaseRepository;
+
     @Override
     public List<Lease> findAllLeasesForUser(String username) {
         return leaseRepository.findByUserName(username);
