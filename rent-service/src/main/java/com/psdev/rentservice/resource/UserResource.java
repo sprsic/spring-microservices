@@ -1,6 +1,7 @@
 package com.psdev.rentservice.resource;
 
 import com.psdev.rentservice.entity.User;
+import com.psdev.rentservice.entity.model.UserModel;
 import com.psdev.rentservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,27 +15,27 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/user")
 public class UserResource {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public ResponseEntity saveUser(@RequestBody  User user) {
-        userService.saveUser(user);
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity saveUser(@RequestBody UserModel userModel) {
+        userService.saveUser(userModel);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<User> findByUsername(@RequestParam("username") String username) {
         User user = userService.findByUsername(username);
         return ResponseEntity.ok(user);
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<User>> listAllUsers(){
         List<User> users = userService.listAllUsers();
         return ResponseEntity.ok(users);
     }
-
 }

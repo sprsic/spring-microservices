@@ -3,7 +3,6 @@ package com.example.rentclient.api;
 import com.example.rentclient.model.LeaseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.xml.ws.Response;
 import java.net.URI;
 import java.util.List;
 
 @RestController
 @RequestMapping("/lease")
-class LeaseApiGateway {
+public class LeaseApiGateway {
     private static String URL = "http://rent-service/lease";
 
     @Autowired

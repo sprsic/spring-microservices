@@ -14,24 +14,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController@RequestMapping("/movie")
 public class MovieResource {
     @Autowired
     private MovieService movieService;
 
-    @RequestMapping(path = "/movie/findByMovieName", method = RequestMethod.GET)
+    @RequestMapping(path = "/findByMovieName", method = RequestMethod.GET)
     public ResponseEntity<Movie> findByUser(@Param("movieName") String movieName) {
         Movie movie = movieService.findByName(movieName);
         return ResponseEntity.ok(movie);
     }
 
-    @RequestMapping(path = "/movie", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> saveMovie(@RequestBody MovieModel movie) {
         movieService.saveMovie(movie);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @RequestMapping(value = "/allMovies", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<Movie>> allMovies() {
         List<Movie> allMovies = movieService.allMovies();
         return ResponseEntity.ok(allMovies);

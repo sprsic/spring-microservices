@@ -25,11 +25,13 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Movie findByName(String name) {
         return movieRepository.findByName(name);
     }
 
     @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public List<Movie> allMovies() {
         //TODO needs pagination
         return movieRepository.findAll();
