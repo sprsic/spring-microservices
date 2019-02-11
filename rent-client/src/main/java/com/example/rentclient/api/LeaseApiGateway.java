@@ -26,8 +26,7 @@ public class LeaseApiGateway {
     @RequestMapping(method = RequestMethod.GET, value = "/findByUsername")
     public ResponseEntity leasesOfUser(@RequestParam("username") String username) {
         ParameterizedTypeReference<List<LeaseModel>> ptr =
-                new ParameterizedTypeReference<List<LeaseModel>>() {
-                };
+                new ParameterizedTypeReference<List<LeaseModel>>() {};
 
         URI url = URI.create(URL + "/byUserName");
         UriComponentsBuilder uri = UriComponentsBuilder.fromUri(url)

@@ -28,14 +28,12 @@ public class MovieApiGateway {
     @Autowired
     private RestTemplate restTemplate;
 
-
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<MovieModel>> allMovies() {
         URI url = URI.create(URL + "/all");
         UriComponents uri = UriComponentsBuilder.fromUri(url).build();
         ParameterizedTypeReference<List<MovieModel>> ptr =
-                new ParameterizedTypeReference<List<MovieModel>>() {
-                };
+                new ParameterizedTypeReference<List<MovieModel>>() {};
         return restTemplate.exchange(uri.toUriString(),
                 HttpMethod.GET, null, ptr);
     }

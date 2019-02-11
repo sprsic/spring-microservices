@@ -1,13 +1,12 @@
 package com.example.rentclient.api;
 
-import com.example.rentclient.model.MovieModel;
 import com.example.rentclient.model.UserModel;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +18,8 @@ import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Collections;
 import java.util.List;
-
 
 @RestController
 @RequestMapping("/user")
@@ -32,6 +31,7 @@ public class UserApiGateway {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity saveUser(@RequestBody UserModel userModel) {
+
         URI url = URI.create(URL);
         UriComponents uri = UriComponentsBuilder.fromUri(url).build();
         HttpEntity<UserModel> httpEntity = new HttpEntity<>(userModel);
@@ -53,6 +53,7 @@ public class UserApiGateway {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @HystrixCommand(fallbackMethod = "emptyUserList")
     public ResponseEntity<List<UserModel>> listAllUsers() {
 
         URI url = URI.create(URL + "/all");
@@ -65,4 +66,10 @@ public class UserApiGateway {
                 HttpMethod.GET, null, ptr);
     }
 
+    /**
+     * Fallback method for getting all users
+     */
+    public ResponseEntity<List<UserModel>> emptyUserList() {
+        return ResponseEntity.ok(Collections.emptyList());
+    }
 }

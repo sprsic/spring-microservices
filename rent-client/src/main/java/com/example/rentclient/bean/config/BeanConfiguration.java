@@ -10,7 +10,7 @@ public class BeanConfiguration {
 
     @Bean
     @LoadBalanced
-    public RestTemplate getRestTemplate() {
+    public RestTemplate apiGatewayrestTemplate() {
         return new RestTemplate();
     }
 }
